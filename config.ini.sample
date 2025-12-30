@@ -1,0 +1,10 @@
+[CxOne]
+access_control_url = https://<subdomain>.iam.checkmarx.net
+server = https://<subdomain>.ast.checkmarx.net
+tenant_name  = ***
+grant_type = refresh_token
+client_id = ast-app
+client_secret = ***
+username = ***
+password = ***
+refresh_token = ***
