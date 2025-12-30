@@ -1,5 +1,14 @@
 import os
 import configparser
+from CheckmarxPythonSDK.CxOne.config import construct_configuration
+from CheckmarxPythonSDK.api_client import ApiClient
+
+def get_auth_headers() -> dict:
+    """Get authorization headers from the SDK's ApiClient."""
+    configuration = construct_configuration()
+    api_client = ApiClient(configuration=configuration)
+    token = api_client.token_manager.get_token()
+    return {"Authorization": f"Bearer {token}"}
 
 def find_project_root():
     """Find the project root by looking for marker files."""
