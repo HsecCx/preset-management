@@ -14,7 +14,7 @@ from ui.components import render_header, render_connection_status, render_discon
 from services.connection import init_session_state, test_and_connect
 
 # Import tabs
-from tabs import presets, projects, scans, audit
+from tabs import presets, projects, scans, audit, log_analyzer
 
 # Apply styles
 apply_styles()
@@ -39,11 +39,12 @@ if st.session_state.connected:
     st.markdown("---")
     
     # Create tabs
-    tab_presets, tab_projects, tab_scans, tab_audit = st.tabs([
+    tab_presets, tab_projects, tab_scans, tab_audit, tab_logs = st.tabs([
         "📋 Presets",
         "📁 Projects",
         "🔍 Scans",
-        "📝 Audit"
+        "📝 Audit",
+        "📄 Log Analyzer"
     ])
     
     with tab_presets:
@@ -57,6 +58,9 @@ if st.session_state.connected:
     
     with tab_audit:
         audit.render()
+    
+    with tab_logs:
+        log_analyzer.render()
 
 else:
     render_disconnected_message(config_path)
